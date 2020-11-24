@@ -4,3 +4,4 @@ requests
 jinja2
 aiofiles
 tensorflow==2.3.0
+python-multipart

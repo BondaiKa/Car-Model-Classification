@@ -7,14 +7,18 @@
 
 <body>
     {% if request.method == "POST" %}
+        <h2>Image</h2>
+        {{ image }}
+        <h2>Results</h2>
+        {{ res }}
+    {% else %}
         <h2>Upload Image</h2>
         <form method=post enctype=multipart/form-data>
             <input type=file name=file>
             <input type=submit value=Upload>
         </form>
-    {% else %}
-        {{ res }}
     {% endif %}
+
 </body>
 
 </html>
