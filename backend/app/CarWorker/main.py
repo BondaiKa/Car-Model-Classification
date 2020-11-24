@@ -13,8 +13,6 @@ from car_classification import recognise_photo
 logging.config.fileConfig('logging.conf', disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 app = FastAPI()
-app.mount("/static", StaticFiles(directory="static"), name="static")
-templates = Jinja2Templates(directory="templates")
 
 
 def custom_openapi():
@@ -39,7 +37,7 @@ async def photo_upload(my_file: UploadFile = File(...)):
     send image to recongise and return classification results
     """
     logger.info("Loading and classification image")
-    with open(my_file.filename, "wb") as f:
+    with open(my_file.filename, "wb"):
         image = await my_file.read()
     
     res, name_class =  recognise_photo(image)

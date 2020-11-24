@@ -1,6 +1,9 @@
-import tensorflow as tf
 import logging
+
 import numpy as np
+import tensorflow as tf
+from fastapi import  HTTPException
+
 logging.config.fileConfig('logging.conf', disable_existing_loggers=False)
 logger = logging.getLogger(__name__)
 
@@ -24,9 +27,14 @@ CAR_CLASSES = [
 
 def image_preprocessing(image):
     logger.info('Decode image...')
-    img_arr = tf.image.resize(tf.io.decode_image(image,channels=3), [256, 256])
+    try:
+        img_arr = tf.image.resize(tf.io.decode_image(image,channels=3), [256, 256])
+    except Exception:
+        raise HTTPException(
+            status_code=400, 
+            detail="Image has small size. Image size needs to be more than 256x256"
+        )
     img_arr = tf.expand_dims(img_arr, axis=0)
-    logger.info(img_arr.shape)
     return img_arr
 
 
