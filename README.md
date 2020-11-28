@@ -1,4 +1,4 @@
-# Local setup :computer:
+### Local setup :computer:
 
 * Donwload app
 ```
@@ -20,7 +20,11 @@ If you don't have docker in your computer, you should install it [Docker](https:
 ```bash
 docker-compose up
 ```
+Information about the project
+---
+* Project documentation [details](docs/project_documentation.md)
 
 
-* project documentation
-[details](docs/project_documentation.md)
+* Arhitecture of the service
+
+![arhitecture](docs/car_model_class_chart.png)
