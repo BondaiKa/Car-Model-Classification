@@ -23,5 +23,4 @@ docker-compose up
 
 
 * project documentation
-
-[link](docs/project_documentation.md)
+[details](docs/project_documentation.md)
