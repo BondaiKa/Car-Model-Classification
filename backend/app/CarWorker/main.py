@@ -31,17 +31,27 @@ def custom_openapi():
     return app.openapi_schema
 
 
+class ImageRecognitionInput(BaseModel):
+    """
+    model_index: alexnet - 0, vgg - 1, inceptionv3 - 2
+    """
+    model_index: int
+
+
 @app.post("/")
-async def photo_upload(my_file: UploadFile = File(...)):
+async def photo_upload(
+    file: UploadFile = File(...)
+    ):
     """
     send image to recongise and return classification results
     """
     logger.info("Loading and classification image")
-    with open(my_file.filename, "wb"):
-        image = await my_file.read()
     
-    res, name_class =  recognise_photo(image)
-    return {"values": str(res),"class":name_class}
+    with open(file.filename, "wb"):
+        image = await file.read()
+
+    return await recognise_photo(image)
+    
 
 
 app.openapi = custom_openapi
