@@ -3,7 +3,7 @@
 * Donwload app
 ```
 # clone app
-git clone https://github.com/BondaiKa/tinyurl.git
+git clone https://github.com/BondaiKa/Car-Model-Classification.git
 
 # change your working dir to project's path
 cd project/path
