@@ -30,7 +30,7 @@ Information about the project
 ![arhitecture](docs/car_model_class_chart.png)
 
 
-* Example of response of classfication model and mark of car endpoint  
+### Example of response of classfication model and mark of car endpoint  
 
 **Input**:
 
